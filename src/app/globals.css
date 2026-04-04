@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+
+  /* Palette de couleurs basée sur le Design System Stitch */
+  --color-primary: #000000;
+  --color-primary-container: #1b1b1b;
+  --color-secondary: #b02f00;
+  --color-secondary-container: #ff5722;
+  --color-surface: #f9f9f9;
+  --color-surface-container-low: #f3f3f3;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-surface: #1a1c1c;
+  --color-on-surface-variant: #4c4546;
+  --color-outline-variant: rgba(207, 196, 197, 0.2);
+}
+
+:root {
+  --background: #f9f9f9;
+  --foreground: #1a1c1c;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans);
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(249, 249, 249, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Tonal Layering */
+.card-lift {
+  background: white;
+  border: 1px solid var(--color-outline-variant);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 40px 60px rgba(26, 28, 28, 0.06);
+}
+
+/* Hidden Scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
