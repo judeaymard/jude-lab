@@ -6,7 +6,7 @@ import { CartProvider } from "@/context/CartContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Mode Dropshipping France | L'Élégance à la Française",
+  title: "Aymardstore | L'Élégance à la Française",
   description: "Boutique en ligne de mode premium",
 };
 
