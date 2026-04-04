@@ -18,15 +18,15 @@ const AdminSupplier = () => {
 
   return (
     <MainLayout>
-      <div className="container mx-auto px-6 py-20 min-h-[70vh]">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+      <div className="container mx-auto px-6 py-12 md:py-20 min-h-[70vh]">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-8">
           <div>
-            <h1 className="text-6xl font-bold mb-4 tracking-tighter uppercase">Gestion Fournisseurs</h1>
-            <p className="text-on-surface-variant max-w-xl text-lg italic">Administration et intégration de la chaîne logistique.</p>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tighter uppercase leading-tight">Gestion Fournisseurs</h1>
+            <p className="text-on-surface-variant max-w-xl text-base md:text-lg italic">Administration et intégration de la chaîne logistique.</p>
           </div>
           <button
             onClick={() => setShowModal(true)}
-            className="bg-secondary-container text-white px-10 py-5 font-bold uppercase tracking-widest text-sm hover:bg-opacity-90 transition-all shadow-xl"
+            className="w-full md:w-auto bg-secondary-container text-white px-8 md:px-10 py-4 md:py-5 font-bold uppercase tracking-widest text-xs md:text-sm hover:bg-opacity-90 transition-all shadow-xl"
           >
              + Ajouter un Fournisseur
           </button>
@@ -34,12 +34,12 @@ const AdminSupplier = () => {
 
         {/* Modal Simulation */}
         {showModal && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm">
-             <div className="bg-white w-full max-w-md p-12 border border-outline-variant shadow-2xl relative">
-                <button onClick={() => setShowModal(false)} className="absolute top-6 right-6 p-2 hover:bg-surface-container-low rounded-full">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-black/60 backdrop-blur-sm">
+             <div className="bg-white w-full max-w-md p-8 md:p-12 border border-outline-variant shadow-2xl relative">
+                <button onClick={() => setShowModal(false)} className="absolute top-4 md:top-6 right-4 md:right-6 p-2 hover:bg-surface-container-low rounded-full">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>
-                <h2 className="text-2xl font-bold uppercase tracking-tighter mb-8">Nouveau Fournisseur</h2>
+                <h2 className="text-xl md:text-2xl font-bold uppercase tracking-tighter mb-8">Nouveau Fournisseur</h2>
                 <form onSubmit={handleAddSupplier} className="space-y-6">
                    <div>
                       <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2 block">Nom de l'entreprise</label>
@@ -63,7 +63,7 @@ const AdminSupplier = () => {
                         placeholder="Ex: Paris, France"
                       />
                    </div>
-                   <button type="submit" className="w-full bg-primary text-white py-5 font-bold uppercase tracking-widest text-xs hover:bg-secondary-container transition-all">
+                   <button type="submit" className="w-full bg-primary text-white py-4 md:py-5 font-bold uppercase tracking-widest text-xs hover:bg-secondary-container transition-all">
                      Enregistrer le Fournisseur
                    </button>
                 </form>
@@ -72,44 +72,44 @@ const AdminSupplier = () => {
         )}
 
         {/* Admin Tabs */}
-        <div className="flex space-x-12 mb-20 border-b border-outline-variant pb-8">
+        <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8 md:space-x-12 mb-12 md:mb-20 border-b border-outline-variant pb-8 overflow-x-auto whitespace-nowrap">
            <button
              onClick={() => setActiveTab('fournisseurs')}
-             className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all ${activeTab === 'fournisseurs' ? 'text-secondary-container border-b-2 border-secondary-container pb-8 -mb-8.5' : 'text-on-surface-variant hover:text-primary'}`}
+             className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all ${activeTab === 'fournisseurs' ? 'text-secondary-container sm:border-b-2 sm:border-secondary-container sm:pb-8 sm:-mb-8.5' : 'text-on-surface-variant hover:text-primary'}`}
            >
              Fournisseurs Actifs
            </button>
            <button
              onClick={() => setActiveTab('stocks')}
-             className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all ${activeTab === 'stocks' ? 'text-secondary-container border-b-2 border-secondary-container pb-8 -mb-8.5' : 'text-on-surface-variant hover:text-primary'}`}
+             className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all ${activeTab === 'stocks' ? 'text-secondary-container sm:border-b-2 sm:border-secondary-container sm:pb-8 sm:-mb-8.5' : 'text-on-surface-variant hover:text-primary'}`}
            >
              Gestion des Stocks
            </button>
            <button
              onClick={() => setActiveTab('analytics')}
-             className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all ${activeTab === 'analytics' ? 'text-secondary-container border-b-2 border-secondary-container pb-8 -mb-8.5' : 'text-on-surface-variant hover:text-primary'}`}
+             className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all ${activeTab === 'analytics' ? 'text-secondary-container sm:border-b-2 sm:border-secondary-container sm:pb-8 sm:-mb-8.5' : 'text-on-surface-variant hover:text-primary'}`}
            >
-             Statistiques & Performance
+             Statistiques \u0026 Performance
            </button>
         </div>
 
         {/* Content */}
         {activeTab === 'fournisseurs' ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {suppliers.map((supplier) => (
-              <div key={supplier.id} className="bg-white border border-outline-variant p-10 shadow-lg card-lift">
-                 <div className="flex justify-between items-start mb-8">
-                   <div className="w-12 h-12 bg-surface-container-low flex items-center justify-center font-black text-xl text-secondary-container">
+              <div key={supplier.id} className="bg-white border border-outline-variant p-8 md:p-10 shadow-lg card-lift">
+                 <div className="flex justify-between items-start mb-6 md:mb-8">
+                   <div className="w-10 h-10 md:w-12 md:h-12 bg-surface-container-low flex items-center justify-center font-black text-xl text-secondary-container">
                      {supplier.name.charAt(0)}
                    </div>
                    <span className={`text-[8px] font-black uppercase tracking-widest px-3 py-1 ${supplier.status === 'Actif' ? 'bg-green-100 text-green-800' : 'bg-orange-100 text-orange-800'}`}>
                      {supplier.status}
                    </span>
                  </div>
-                 <h3 className="text-xl font-bold uppercase tracking-tighter mb-2">{supplier.name}</h3>
-                 <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest mb-10">{supplier.location}</p>
+                 <h3 className="text-lg md:text-xl font-bold uppercase tracking-tighter mb-2">{supplier.name}</h3>
+                 <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest mb-8 md:mb-10">{supplier.location}</p>
 
-                 <div className="space-y-6 pt-10 border-t border-outline-variant/30">
+                 <div className="space-y-4 md:space-y-6 pt-8 md:pt-10 border-t border-outline-variant/30">
                     <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
                        <span>Produits Actifs</span>
                        <span className="text-primary font-black">{supplier.items}</span>
@@ -120,15 +120,15 @@ const AdminSupplier = () => {
                     </div>
                  </div>
 
-                 <button className="mt-12 w-full text-center text-[10px] font-bold uppercase tracking-widest py-4 border border-outline-variant hover:bg-primary hover:text-white hover:border-primary transition-all">
+                 <button className="mt-8 md:mt-12 w-full text-center text-[10px] font-bold uppercase tracking-widest py-3 md:py-4 border border-outline-variant hover:bg-primary hover:text-white hover:border-primary transition-all">
                    Gérer l'intégration
                  </button>
               </div>
             ))}
           </div>
         ) : (
-          <div className="py-40 text-center bg-surface-container-low border border-outline-variant border-dashed">
-            <h2 className="text-2xl font-bold uppercase tracking-widest text-on-surface-variant mb-4">Module en cours de développement</h2>
+          <div className="py-24 md:py-40 text-center bg-surface-container-low border border-outline-variant border-dashed">
+            <h2 className="text-xl md:text-2xl font-bold uppercase tracking-widest text-on-surface-variant mb-4">Module en cours de développement</h2>
             <p className="text-sm italic">Les fonctionnalités de {activeTab} seront bientôt disponibles.</p>
           </div>
         )}

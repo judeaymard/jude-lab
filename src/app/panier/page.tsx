@@ -17,20 +17,20 @@ const Panier = () => {
 
   return (
     <MainLayout>
-      <div className="container mx-auto px-6 py-20 min-h-[70vh]">
-        <h1 className="text-6xl font-bold mb-16 tracking-tighter uppercase">Mon Panier</h1>
+      <div className="container mx-auto px-6 py-12 md:py-20 min-h-[70vh]">
+        <h1 className="text-4xl md:text-6xl font-bold mb-10 md:mb-16 tracking-tighter uppercase">Mon Panier</h1>
 
         {cart.length === 0 ? (
-          <div className="text-center py-20 bg-surface-container-low border border-outline-variant">
-            <h2 className="text-2xl font-bold mb-8 uppercase tracking-widest text-on-surface-variant">Votre panier est vide</h2>
-            <Link href="/boutique" className="inline-block bg-primary text-white px-12 py-5 font-bold uppercase tracking-widest text-sm hover:bg-secondary-container transition-all">
+          <div className="text-center py-12 md:py-20 bg-surface-container-low border border-outline-variant px-4">
+            <h2 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 uppercase tracking-widest text-on-surface-variant">Votre panier est vide</h2>
+            <Link href="/boutique" className="inline-block bg-primary text-white px-8 md:px-12 py-4 md:py-5 font-bold uppercase tracking-widest text-xs md:text-sm hover:bg-secondary-container transition-all">
               Retourner à la Boutique
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 md:gap-16 items-start">
             {/* List */}
-            <div className="lg:col-span-2 space-y-12">
+            <div className="lg:col-span-2 space-y-8 md:space-y-12">
               <div className="hidden md:grid grid-cols-6 gap-6 pb-6 border-b border-outline-variant text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
                 <span className="col-span-3">Produit</span>
                 <span className="text-center">Quantité</span>
@@ -39,13 +39,13 @@ const Panier = () => {
               </div>
 
               {cart.map((item) => (
-                <div key={item.id} className="grid grid-cols-1 md:grid-cols-6 gap-6 items-center pb-8 border-b border-outline-variant/30">
-                  <div className="col-span-3 flex items-center space-x-8">
-                    <div className="w-24 h-32 bg-surface-container-low overflow-hidden">
+                <div key={item.id} className="flex flex-col md:grid md:grid-cols-6 gap-6 items-center pb-8 border-b border-outline-variant/30">
+                  <div className="w-full md:col-span-3 flex items-center space-x-4 md:space-x-8">
+                    <div className="w-20 md:w-24 h-28 md:h-32 bg-surface-container-low overflow-hidden flex-shrink-0">
                       <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                     </div>
-                    <div className="space-y-2">
-                      <h3 className="text-lg font-bold uppercase tracking-tight">{item.name}</h3>
+                    <div className="space-y-1 md:space-y-2 flex-grow">
+                      <h3 className="text-base md:text-lg font-bold uppercase tracking-tight">{item.name}</h3>
                       <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">
                         {item.size && `Taille: ${item.size}`} {item.color && `• Couleur: ${item.color}`}
                       </p>
@@ -58,7 +58,8 @@ const Panier = () => {
                     </div>
                   </div>
 
-                  <div className="flex justify-center">
+                  <div className="w-full md:w-auto flex justify-between md:justify-center items-center">
+                    <span className="md:hidden text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Quantité</span>
                     <div className="flex items-center border border-outline-variant px-4 py-2">
                       <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="font-bold hover:text-secondary-container transition-colors">-</button>
                       <span className="mx-6 font-bold text-sm">{item.quantity}</span>
@@ -66,12 +67,14 @@ const Panier = () => {
                     </div>
                   </div>
 
-                  <div className="text-center font-medium">
-                    {item.price.toFixed(2)}€
+                  <div className="w-full md:w-auto flex justify-between md:justify-center items-center font-medium">
+                    <span className="md:hidden text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Prix Unitaire</span>
+                    <span>{item.price.toFixed(2)}€</span>
                   </div>
 
-                  <div className="text-right font-bold text-lg">
-                    {(item.price * item.quantity).toFixed(2)}€
+                  <div className="w-full md:w-auto flex justify-between md:justify-end items-center font-bold text-lg">
+                    <span className="md:hidden text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Total</span>
+                    <span>{(item.price * item.quantity).toFixed(2)}€</span>
                   </div>
                 </div>
               ))}
@@ -82,9 +85,9 @@ const Panier = () => {
             </div>
 
             {/* Summary */}
-            <div className="bg-white p-12 border border-outline-variant sticky top-40 shadow-xl">
-              <h2 className="text-2xl font-bold mb-10 uppercase tracking-widest">Récapitulatif</h2>
-              <div className="space-y-6 mb-10 pb-10 border-b border-outline-variant/30">
+            <div className="bg-white p-8 md:p-12 border border-outline-variant md:sticky md:top-40 shadow-xl">
+              <h2 className="text-xl md:text-2xl font-bold mb-8 md:mb-10 uppercase tracking-widest">Récapitulatif</h2>
+              <div className="space-y-6 mb-8 md:mb-10 pb-8 md:pb-10 border-b border-outline-variant/30">
                 <div className="flex justify-between text-sm">
                   <span className="text-on-surface-variant font-medium uppercase tracking-widest">Sous-total</span>
                   <span className="font-bold">{cartTotal.toFixed(2)}€</span>
@@ -99,14 +102,14 @@ const Panier = () => {
                 </div>
               </div>
 
-              <div className="flex justify-between mb-12">
-                <span className="text-xl font-bold uppercase tracking-widest">Total</span>
-                <span className="text-2xl font-black">{cartTotal.toFixed(2)}€</span>
+              <div className="flex justify-between mb-8 md:mb-12">
+                <span className="text-lg md:text-xl font-bold uppercase tracking-widest">Total</span>
+                <span className="text-xl md:text-2xl font-black">{cartTotal.toFixed(2)}€</span>
               </div>
 
               <button
                 onClick={handleCheckout}
-                className="w-full bg-primary text-white py-6 font-bold uppercase tracking-widest text-sm hover:bg-secondary-container transition-all mb-6"
+                className="w-full bg-primary text-white py-4 md:py-6 font-bold uppercase tracking-widest text-xs md:text-sm hover:bg-secondary-container transition-all mb-6"
               >
                 Procéder au Paiement
               </button>
