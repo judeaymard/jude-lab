@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-24">
           <div className="col-span-1 md:col-span-1">
-            <h3 className="text-xl font-bold mb-8">AYMARDSTORE</h3>
+            <h3 className="text-xl font-bold mb-8">AymardStore</h3>
             <p className="text-on-surface-variant text-sm leading-relaxed mb-8">
               L'excellence de la mode française, curatée avec passion pour les esprits audacieux et élégants.
             </p>
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-primary-container pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">
-          <p>© 2024 AYMARDSTORE. TOUS DROITS RÉSERVÉS.</p>
+          <p>© 2024 AymardStore. TOUS DROITS RÉSERVÉS.</p>
           <div className="flex space-x-8 mt-4 md:mt-0">
             <span>PAIEMENT SÉCURISÉ</span>
             <span>VISA • MASTERCARD • PAYPAL</span>

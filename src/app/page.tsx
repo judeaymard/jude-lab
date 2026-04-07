@@ -102,7 +102,7 @@ const Home = () => {
               <span className="text-secondary-container text-sm font-bold uppercase tracking-widest mb-4 md:mb-6 block italic">La Philosophie</span>
               <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-6 md:mb-8 leading-tight">PLUS QU'UNE BOUTIQUE, <br className="hidden md:block" />UNE CURATION D'EXCELLENCE</h2>
               <p className="text-base md:text-lg text-on-surface-variant leading-relaxed mb-8 md:mb-12">
-                Chez Aymardstore, nous croyons que le vêtement est le reflet de l'âme. Nous parcourons l'Europe pour dénicher des pièces uniques qui marient savoir-faire traditionnel et esthétique contemporaine. Chaque article de notre collection raconte une histoire de passion, de qualité et de style.
+                Chez AymardStore, nous croyons que le vêtement est le reflet de l'âme. Nous parcourons l'Europe pour dénicher des pièces uniques qui marient savoir-faire traditionnel et esthétique contemporaine. Chaque article de notre collection raconte une histoire de passion, de qualité et de style.
               </p>
               <Link href="/boutique" className="inline-block bg-primary text-white px-10 md:px-12 py-4 md:py-5 font-bold uppercase tracking-widest text-xs md:text-sm hover:bg-secondary transition-all w-full sm:w-auto text-center">
                 Notre Histoire
