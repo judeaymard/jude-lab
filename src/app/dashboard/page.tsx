@@ -6,92 +6,98 @@ import Link from "next/link";
 
 const Dashboard = () => {
   const orders = [
-    { id: '#MDF-2024-001', date: '12 Jan 2024', status: 'Livré', total: 189.00 },
-    { id: '#MDF-2024-002', date: '15 Fév 2024', status: 'En préparation', total: 345.00 },
+    { id: '#AYM-2024-042', date: '12 MARS 2024', status: 'LIVRÉ', total: 489.00 },
+    { id: '#AYM-2024-051', date: '05 AVRIL 2024', status: 'EN TRANSIT', total: 1290.00 },
   ];
 
   return (
     <MainLayout>
-      <div className="container mx-auto px-6 py-12 md:py-20 min-h-[70vh]">
-        <h1 className="text-4xl md:text-6xl font-bold mb-10 md:mb-16 tracking-tighter uppercase">Mon Compte</h1>
-
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 md:gap-20 items-start">
-          {/* Sidebar */}
-          <div className="lg:col-span-1 space-y-8 md:space-y-12">
-            <div className="pb-8 md:pb-12 border-b border-outline-variant">
-              <h2 className="text-xl md:text-2xl font-bold uppercase mb-2 md:mb-4 tracking-tighter">Jean Dupont</h2>
-              <p className="text-xs md:text-sm text-on-surface-variant font-medium uppercase tracking-widest italic">Client Privilégié</p>
-            </div>
-
-            <nav className="flex flex-row lg:flex-col flex-wrap gap-6 md:gap-8 lg:space-y-8">
-              <Link href="/dashboard" className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-secondary-container">Tableau de Bord</Link>
-              <Link href="#" className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-on-surface-variant hover:text-primary">Mes Commandes</Link>
-              <Link href="#" className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-on-surface-variant hover:text-primary">Mes Favoris</Link>
-              <Link href="#" className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-on-surface-variant hover:text-primary">Paramètres</Link>
-              <Link href="/" className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-secondary mt-0 lg:mt-12 hover:text-primary">Déconnexion</Link>
-            </nav>
+      <div className="pt-40 pb-40">
+        <div className="container mx-auto px-6">
+          <div className="mb-24">
+             <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-on-surface-variant mb-6 block italic">Espace Client Privé</span>
+             <h1 className="display-lg uppercase leading-tight">MON COMPTE</h1>
           </div>
 
-          {/* Main Content */}
-          <div className="lg:col-span-3 space-y-16 md:space-y-24">
-            {/* Overview */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-12">
-               <div className="bg-white p-8 md:p-12 border border-outline-variant shadow-lg card-lift">
-                 <h3 className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-4 md:mb-6">Total Dépensé</h3>
-                 <span className="text-2xl md:text-3xl font-black">534.00€</span>
-               </div>
-               <div className="bg-white p-8 md:p-12 border border-outline-variant shadow-lg card-lift">
-                 <h3 className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-4 md:mb-6">Commandes</h3>
-                 <span className="text-2xl md:text-3xl font-black">02</span>
-               </div>
-               <div className="bg-white p-8 md:p-12 border border-outline-variant shadow-lg card-lift">
-                 <h3 className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-4 md:mb-6">Articles Favoris</h3>
-                 <span className="text-2xl md:text-3xl font-black">05</span>
-               </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
+
+            {/* Navigation Latérale Éditoriale */}
+            <div className="lg:col-span-3 space-y-16">
+              <div className="pb-16 border-b border-outline-variant/30">
+                <h2 className="text-xl font-display font-bold uppercase tracking-widest mb-4">M. JEAN DUPONT</h2>
+                <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-tertiary-container">Membre Signature depuis 2024</span>
+              </div>
+
+              <nav className="flex flex-col space-y-10">
+                <Link href="/dashboard" className="text-[11px] font-bold uppercase tracking-[0.3em] text-primary border-l-2 border-primary pl-6">Aperçu</Link>
+                <Link href="#" className="text-[11px] font-bold uppercase tracking-[0.3em] text-on-surface-variant hover:text-primary pl-6 transition-colors">Mes Commandes</Link>
+                <Link href="#" className="text-[11px] font-bold uppercase tracking-[0.3em] text-on-surface-variant hover:text-primary pl-6 transition-colors">Ma Curation Favoris</Link>
+                <Link href="#" className="text-[11px] font-bold uppercase tracking-[0.3em] text-on-surface-variant hover:text-primary pl-6 transition-colors">Adresses & Profil</Link>
+                <Link href="/" className="text-[11px] font-bold uppercase tracking-[0.3em] text-tertiary pl-6 pt-10">Se Déconnecter</Link>
+              </nav>
             </div>
 
-            {/* Orders Table */}
-            <div className="space-y-8 md:space-y-12">
-               <h3 className="text-2xl font-bold uppercase tracking-tighter">Historique des Commandes</h3>
-               <div className="bg-white border border-outline-variant shadow-xl overflow-x-auto">
-                 <table className="w-full text-left min-w-[600px]">
-                   <thead className="bg-surface-container-low border-b border-outline-variant">
-                     <tr>
-                       <th className="px-6 md:px-10 py-4 md:py-6 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">ID Commande</th>
-                       <th className="px-6 md:px-10 py-4 md:py-6 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Date</th>
-                       <th className="px-6 md:px-10 py-4 md:py-6 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Status</th>
-                       <th className="px-6 md:px-10 py-4 md:py-6 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant text-right">Total</th>
-                     </tr>
-                   </thead>
-                   <tbody>
-                     {orders.map((order) => (
-                       <tr key={order.id} className="border-b border-outline-variant hover:bg-surface-container-low/50 transition-colors">
-                         <td className="px-6 md:px-10 py-6 md:py-8 text-sm font-bold tracking-tight">{order.id}</td>
-                         <td className="px-6 md:px-10 py-6 md:py-8 text-sm font-medium uppercase tracking-widest">{order.date}</td>
-                         <td className="px-6 md:px-10 py-6 md:py-8">
-                           <span className={`text-[9px] font-black uppercase tracking-widest px-3 py-1 ${order.status === 'Livré' ? 'bg-green-100 text-green-800' : 'bg-orange-100 text-orange-800'}`}>
+            {/* Contenu Principal */}
+            <div className="lg:col-span-9 space-y-24">
+
+              {/* Stats / Overview */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                 <div className="bg-surface-container-low p-12 relative overflow-hidden group">
+                    <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-on-surface-variant mb-8 block">Dépenses Annuelles</span>
+                    <h3 className="text-3xl font-display font-bold italic">1 779.00€</h3>
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 -translate-y-12 translate-x-12 rounded-full group-hover:scale-110 transition-transform"></div>
+                 </div>
+                 <div className="bg-surface-container-low p-12 relative overflow-hidden group">
+                    <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-on-surface-variant mb-8 block">Statut Fidélité</span>
+                    <h3 className="text-3xl font-display font-bold italic">Élite Paris</h3>
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-tertiary-container/5 -translate-y-12 translate-x-12 rounded-full group-hover:scale-110 transition-transform"></div>
+                 </div>
+              </div>
+
+              {/* Historique - Design Épuré */}
+              <div className="space-y-12">
+                 <div className="flex justify-between items-baseline border-b border-outline-variant/30 pb-6">
+                    <h3 className="text-xs font-bold uppercase tracking-[0.4em]">HISTORIQUE RÉCENT</h3>
+                    <button className="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant border-b border-outline-variant">Voir Tout</button>
+                 </div>
+
+                 <div className="space-y-6">
+                    {orders.map((order) => (
+                      <div key={order.id} className="group flex flex-col md:flex-row justify-between items-center py-8 border-b border-outline-variant/10 hover:bg-surface-container-low/30 transition-all px-4">
+                        <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-12 mb-6 md:mb-0">
+                           <span className="text-[11px] font-bold tracking-widest">{order.id}</span>
+                           <span className="text-[10px] text-on-surface-variant uppercase tracking-widest">{order.date}</span>
+                        </div>
+                        <div className="flex items-center space-x-12">
+                           <span className={`text-[9px] font-bold uppercase tracking-[0.2em] ${order.status === 'LIVRÉ' ? 'text-green-600' : 'text-tertiary-container'}`}>
                              {order.status}
                            </span>
-                         </td>
-                         <td className="px-6 md:px-10 py-6 md:py-8 text-sm font-black text-right">{order.total.toFixed(2)}€</td>
-                       </tr>
-                     ))}
-                   </tbody>
-                 </table>
-               </div>
-            </div>
+                           <span className="text-sm font-light italic">{order.total.toFixed(2)}€</span>
+                           <button className="p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                           </button>
+                        </div>
+                      </div>
+                    ))}
+                 </div>
+              </div>
 
-            {/* Preferred Address */}
-            <div className="bg-surface-container-low p-8 md:p-12 border border-outline-variant border-dashed">
-              <h3 className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-6 md:mb-8">Adresse de Livraison Par Défaut</h3>
-              <p className="text-base md:text-lg font-bold leading-relaxed max-w-sm uppercase tracking-tight">
-                Jean Dupont<br />
-                123 Avenue des Champs-Élysées<br />
-                75008 Paris, France
-              </p>
-              <button className="mt-6 md:mt-8 text-[10px] font-bold uppercase tracking-widest border-b-2 border-primary pb-1 hover:text-secondary-container hover:border-secondary-container transition-all">
-                Modifier l'adresse
-              </button>
+              {/* Preference / Address - Editorial Card */}
+              <div className="border border-outline-variant/30 p-12 md:p-16 relative">
+                 <div className="absolute top-12 right-12">
+                    <span className="w-12 h-[1px] bg-primary block"></span>
+                 </div>
+                 <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-on-surface-variant mb-10 block">Résidence de Livraison Principale</span>
+                 <p className="text-lg font-display font-bold leading-relaxed max-w-sm uppercase tracking-wider mb-12">
+                    JEAN DUPONT<br />
+                    123 AVENUE DES CHAMPS-ÉLYSÉES<br />
+                    75008 PARIS, FRANCE
+                 </p>
+                 <button className="text-[10px] font-bold uppercase tracking-widest border-b border-primary pb-2 hover:text-tertiary-container transition-colors">
+                    MODIFIER MES INFORMATIONS
+                 </button>
+              </div>
+
             </div>
           </div>
         </div>
