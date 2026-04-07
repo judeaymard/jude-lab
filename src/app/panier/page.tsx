@@ -11,113 +11,114 @@ const Panier = () => {
   const router = useRouter();
 
   const handleCheckout = () => {
-    // Simulation d'une redirection vers le succès
     router.push('/checkout-success');
   };
 
   return (
     <MainLayout>
-      <div className="container mx-auto px-6 py-12 md:py-20 min-h-[70vh]">
-        <h1 className="text-4xl md:text-6xl font-bold mb-10 md:mb-16 tracking-tighter uppercase">Mon Panier</h1>
-
-        {cart.length === 0 ? (
-          <div className="text-center py-12 md:py-20 bg-surface-container-low border border-outline-variant px-4">
-            <h2 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 uppercase tracking-widest text-on-surface-variant">Votre panier est vide</h2>
-            <Link href="/boutique" className="inline-block bg-primary text-white px-8 md:px-12 py-4 md:py-5 font-bold uppercase tracking-widest text-xs md:text-sm hover:bg-secondary-container transition-all">
-              Retourner à la Boutique
-            </Link>
+      <div className="pt-40 pb-40">
+        <div className="container mx-auto px-6">
+          <div className="mb-20 text-center">
+             <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-on-surface-variant mb-6 block">Votre Sélection</span>
+             <h1 className="display-lg uppercase">VOTRE PANIER</h1>
           </div>
-        ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 md:gap-16 items-start">
-            {/* List */}
-            <div className="lg:col-span-2 space-y-8 md:space-y-12">
-              <div className="hidden md:grid grid-cols-6 gap-6 pb-6 border-b border-outline-variant text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
-                <span className="col-span-3">Produit</span>
-                <span className="text-center">Quantité</span>
-                <span className="text-center">Prix</span>
-                <span className="text-right">Total</span>
-              </div>
 
-              {cart.map((item) => (
-                <div key={item.id} className="flex flex-col md:grid md:grid-cols-6 gap-6 items-center pb-8 border-b border-outline-variant/30">
-                  <div className="w-full md:col-span-3 flex items-center space-x-4 md:space-x-8">
-                    <div className="w-20 md:w-24 h-28 md:h-32 bg-surface-container-low overflow-hidden flex-shrink-0">
-                      <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                    </div>
-                    <div className="space-y-1 md:space-y-2 flex-grow">
-                      <h3 className="text-base md:text-lg font-bold uppercase tracking-tight">{item.name}</h3>
-                      <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">
-                        {item.size && `Taille: ${item.size}`} {item.color && `• Couleur: ${item.color}`}
-                      </p>
-                      <button
-                        onClick={() => removeFromCart(item.id)}
-                        className="text-[10px] font-bold uppercase tracking-widest text-secondary hover:text-primary transition-colors underline underline-offset-4"
-                      >
-                        Supprimer
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="w-full md:w-auto flex justify-between md:justify-center items-center">
-                    <span className="md:hidden text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Quantité</span>
-                    <div className="flex items-center border border-outline-variant px-4 py-2">
-                      <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="font-bold hover:text-secondary-container transition-colors">-</button>
-                      <span className="mx-6 font-bold text-sm">{item.quantity}</span>
-                      <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="font-bold hover:text-secondary-container transition-colors">+</button>
-                    </div>
-                  </div>
-
-                  <div className="w-full md:w-auto flex justify-between md:justify-center items-center font-medium">
-                    <span className="md:hidden text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Prix Unitaire</span>
-                    <span>{item.price.toFixed(2)}€</span>
-                  </div>
-
-                  <div className="w-full md:w-auto flex justify-between md:justify-end items-center font-bold text-lg">
-                    <span className="md:hidden text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Total</span>
-                    <span>{(item.price * item.quantity).toFixed(2)}€</span>
-                  </div>
-                </div>
-              ))}
-
-              <Link href="/boutique" className="inline-block text-[10px] font-bold uppercase tracking-widest border-b-2 border-primary pb-1 hover:text-secondary-container hover:border-secondary-container transition-all">
-                Continuer mes achats
+          {cart.length === 0 ? (
+            <div className="text-center py-40 bg-surface-container-low border-y border-outline-variant/20">
+              <p className="body-md text-on-surface-variant italic mb-12">Votre panier est actuellement vide.</p>
+              <Link href="/boutique" className="inline-block bg-primary text-white px-12 py-5 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-tertiary transition-all">
+                Explorer les Collections
               </Link>
             </div>
+          ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
 
-            {/* Summary */}
-            <div className="bg-white p-8 md:p-12 border border-outline-variant md:sticky md:top-40 shadow-xl">
-              <h2 className="text-xl md:text-2xl font-bold mb-8 md:mb-10 uppercase tracking-widest">Récapitulatif</h2>
-              <div className="space-y-6 mb-8 md:mb-10 pb-8 md:pb-10 border-b border-outline-variant/30">
-                <div className="flex justify-between text-sm">
-                  <span className="text-on-surface-variant font-medium uppercase tracking-widest">Sous-total</span>
-                  <span className="font-bold">{cartTotal.toFixed(2)}€</span>
+              {/* List of items */}
+              <div className="lg:col-span-8 space-y-12">
+                <div className="hidden md:grid grid-cols-12 gap-8 pb-6 border-b border-outline-variant/30 text-[9px] font-bold uppercase tracking-[0.3em] text-on-surface-variant">
+                  <span className="col-span-7">Description du Produit</span>
+                  <span className="col-span-2 text-center">Quantité</span>
+                  <span className="col-span-3 text-right">Montant</span>
                 </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-on-surface-variant font-medium uppercase tracking-widest">Livraison</span>
-                  <span className="font-bold text-secondary-container uppercase tracking-widest text-[10px]">Offerte</span>
+
+                {cart.map((item) => (
+                  <div key={item.id} className="flex flex-col md:grid md:grid-cols-12 gap-8 items-center pb-12 border-b border-outline-variant/10">
+                    <div className="w-full md:col-span-7 flex items-center space-x-10">
+                      <div className="w-24 aspect-[3/4] bg-surface-container-low overflow-hidden flex-shrink-0">
+                        <img src={item.image} alt={item.name} className="w-full h-full object-cover grayscale" />
+                      </div>
+                      <div className="space-y-3">
+                        <span className="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant">Collection 2024</span>
+                        <h3 className="text-sm font-bold uppercase tracking-widest">{item.name}</h3>
+                        <p className="text-[10px] text-on-surface-variant italic">
+                          {item.size && `Taille : ${item.size}`} {item.color && ` • ${item.color}`}
+                        </p>
+                        <button
+                          onClick={() => removeFromCart(item.id)}
+                          className="text-[9px] font-bold uppercase tracking-widest text-tertiary-container hover:text-primary transition-colors border-b border-tertiary-container/30"
+                        >
+                          Supprimer
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="w-full md:col-span-2 flex justify-center">
+                      <div className="flex items-center space-x-8 text-xs font-light">
+                        <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="hover:text-tertiary transition-colors">—</button>
+                        <span className="font-bold">{item.quantity}</span>
+                        <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="hover:text-tertiary transition-colors">+</button>
+                      </div>
+                    </div>
+
+                    <div className="w-full md:col-span-3 text-right">
+                      <span className="text-sm font-light italic">{(item.price * item.quantity).toFixed(2)}€</span>
+                    </div>
+                  </div>
+                ))}
+
+                <Link href="/boutique" className="inline-block text-[10px] font-bold uppercase tracking-[0.2em] border-b border-primary pb-2 hover:text-tertiary-container transition-all">
+                  Continuer les Achats
+                </Link>
+              </div>
+
+              {/* Order Summary */}
+              <div className="lg:col-span-4 bg-surface-container-low p-10 md:p-12 lg:sticky lg:top-40">
+                <h2 className="text-xs font-bold uppercase tracking-[0.4em] mb-12">RÉCAPITULATIF</h2>
+
+                <div className="space-y-8 mb-12 pb-12 border-b border-outline-variant/30">
+                  <div className="flex justify-between items-baseline">
+                    <span className="text-[10px] uppercase tracking-widest text-on-surface-variant">Sous-total</span>
+                    <span className="text-sm font-light italic">{cartTotal.toFixed(2)}€</span>
+                  </div>
+                  <div className="flex justify-between items-baseline">
+                    <span className="text-[10px] uppercase tracking-widest text-on-surface-variant">Livraison Standard</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-tertiary-container">OFFERTE</span>
+                  </div>
                 </div>
-                <div className="flex justify-between text-sm">
-                   <span className="text-on-surface-variant font-medium uppercase tracking-widest">TVA (20%)</span>
-                   <span className="font-bold">{(cartTotal * 0.2).toFixed(2)}€</span>
+
+                <div className="flex justify-between items-baseline mb-16">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Total TTC</span>
+                  <span className="text-2xl font-display font-bold italic">{cartTotal.toFixed(2)}€</span>
+                </div>
+
+                <button
+                  onClick={handleCheckout}
+                  className="w-full bg-primary text-white py-6 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-tertiary transition-all"
+                >
+                  Finaliser la Commande
+                </button>
+
+                <div className="mt-12 space-y-4">
+                   <div className="flex items-center space-x-4 opacity-40">
+                      <div className="w-4 h-4 bg-primary"></div>
+                      <span className="text-[8px] font-bold uppercase tracking-widest">Paiement Sécurisé SSL</span>
+                   </div>
                 </div>
               </div>
 
-              <div className="flex justify-between mb-8 md:mb-12">
-                <span className="text-lg md:text-xl font-bold uppercase tracking-widest">Total</span>
-                <span className="text-xl md:text-2xl font-black">{cartTotal.toFixed(2)}€</span>
-              </div>
-
-              <button
-                onClick={handleCheckout}
-                className="w-full bg-primary text-white py-4 md:py-6 font-bold uppercase tracking-widest text-xs md:text-sm hover:bg-secondary-container transition-all mb-6"
-              >
-                Procéder au Paiement
-              </button>
-
-              <p className="text-[9px] text-on-surface-variant uppercase tracking-widest text-center">Paiement 100% sécurisé via SSL</p>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </MainLayout>
   );

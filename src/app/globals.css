@@ -2,18 +2,32 @@
 
 @theme {
   --font-sans: var(--font-inter);
+  --font-display: var(--font-manrope);
 
-  /* Palette de couleurs basée sur le Design System Stitch */
+  /* Palette de couleurs basée sur le Design System "The Editorial Canvas" */
   --color-primary: #000000;
-  --color-primary-container: #1b1b1b;
-  --color-secondary: #b02f00;
-  --color-secondary-container: #ff5722;
+  --color-on-primary: #e2e2e2;
+  --color-primary-container: #3b3b3b;
+
+  --color-secondary: #5d5f5f;
+  --color-secondary-container: #d4d4d4;
+
+  --color-tertiary: #7e0006;
+  --color-tertiary-container: #e32322;
+  --color-tertiary-fixed: #c0000f;
+
   --color-surface: #f9f9f9;
   --color-surface-container-low: #f3f3f3;
+  --color-surface-container-highest: #e2e2e2;
   --color-surface-container-lowest: #ffffff;
+
   --color-on-surface: #1a1c1c;
-  --color-on-surface-variant: #4c4546;
-  --color-outline-variant: rgba(207, 196, 197, 0.2);
+  --color-on-surface-variant: #474747;
+
+  --color-outline: #777777;
+  --color-outline-variant: #c6c6c6;
+
+  --color-error: #ba1a1a;
 }
 
 :root {
@@ -27,23 +41,63 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Glassmorphism utility */
+/* Editorial Rules */
+
+/* The "No-Line" Rule: Boundaries defined by background color shifts */
+section {
+  @apply bg-surface;
+}
+
+/* The "Glass & Gradient" Rule */
 .glass {
-  background: rgba(249, 249, 249, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  @apply bg-white/80 backdrop-blur-[24px];
+}
+
+/* Signature Textures for high-conversion CTAs */
+.cta-gradient {
+  background: linear-gradient(135deg, var(--color-tertiary), var(--color-tertiary-container));
+}
+
+/* Typography styles */
+.display-lg {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.headline-lg {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.body-md {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.6;
 }
 
 /* Tonal Layering */
-.card-lift {
-  background: white;
-  border: 1px solid var(--color-outline-variant);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.elevated-card {
+  @apply bg-surface-container-lowest;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.card-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 40px 60px rgba(26, 28, 28, 0.06);
+.elevated-card:hover {
+  @apply bg-surface-container-highest;
+  box-shadow: 0 20px 40px rgba(26, 28, 28, 0.06);
+}
+
+/* Input Fields - Floating labels, bottom border only */
+.editorial-input {
+  @apply bg-transparent border-b border-outline-variant transition-all duration-300;
+}
+
+.editorial-input:focus {
+  @apply border-primary outline-none;
+  border-bottom-width: 2px;
 }
 
 /* Hidden Scrollbar */
