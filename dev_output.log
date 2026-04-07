@@ -1,12 +1,12 @@
 
-> mode-dropshipping-france@0.1.0 dev
+> aymardstore@0.1.0 dev
 > next dev
 
 ⚠ Port 3000 is in use by an unknown process, using available port 3001 instead.
 ▲ Next.js 16.2.2 (Turbopack)
 - Local:         http://localhost:3001
 - Network:       http://192.168.0.2:3001
-✓ Ready in 588ms
+✓ Ready in 1760ms
 ⨯ Another next dev server is already running.
 
 - Local:        http://localhost:3000
